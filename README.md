@@ -15,7 +15,7 @@ This fix applies new filter that uses new converter. Everything is configured to
 
 ## Installation and configuration
 ### Initial setup
-Add release (.jar file) as a library to your project. (Working on adding to Maven)
+Add release (.jar file) as a library to your project.
 
 As stated above, eBay uses different **redirect_uri** parameter and actual success/failure URL that eBay redirects to. Use application.properties as always to configure eBay's OAuth2 settings ([Authorization Grant Support](https://docs.spring.io/spring-security/reference/servlet/oauth2/client/authorization-grants.html)) (use 'ebay' as registrationId):
 ```
