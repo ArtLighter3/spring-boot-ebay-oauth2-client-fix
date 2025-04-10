@@ -52,7 +52,7 @@ public class SecurityConfig {
 Then, configuration for eBay specifically should be done automatically if your app is non-reactive and 'authorization-code-redirect-uri' is specified.
 
 ### Manual configuration
-If you want to manually configure eBay's filter with own **registrationId**, then you must not specify **authorization-code-redirect-uri** property in application.properties and use OAuth2eBayAuthorizationCodeGrantFilterBuilder to build filter and add it to SecurityFilterChain. Example:
+If you want to manually configure eBay's filter with own **registrationId**, then you must not specify **authorization-code-redirect-uri** property in application.properties and use OAuth2eBayAuthorizationCodeGrantFilterBuilder to build filter and add it to SecurityFilterChain (to specify order you may add it before OAuth2AuthorizationCodeGrantFilter). Example:
 ```
 @Configuration
 @EnableWebSecurity
@@ -65,11 +65,11 @@ public class SecurityConfig {
 
         return httpSecurity
                 .oauth2Client(Customizer.withDefaults())
-                .addFilter(OAuth2eBayAuthorizationCodeGrantFilterBuilder
+                .addFilterBefore(OAuth2eBayAuthorizationCodeGrantFilterBuilder
                         .withRepositories(clientRegistrationRepository, authorizedClientRepository)
                         .eBayClientRegistrationId("ebay_us")
                         .authorizationCodeRedirectUri("{baseUrl}/ebay_us")
-                        .build())
+                        .build(), OAuth2AuthorizationCodeGrantFilter.class)
                 .build();
     }
 
