@@ -10,18 +10,25 @@
 		eBay's OAuth2 is somewhat different from others. This fix applies new filter that should work with eBay correctly.
 	</description>
 	<packaging>jar</packaging>
-	<url/>
+	<url>https://github.com/ArtLighter3/spring-boot-ebay-oauth2-client-fix</url>
 	<licenses>
-		<license/>
+		<license>
+			<name>GNU General Public License v3.0 or later</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+		</license>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<name>Artyom Shuklin</name>
+			<email>shuklin1995@list.ru</email>
+			<organization>ArtLighter</organization>
+			<organizationUrl>https://github.com/ArtLighter3</organizationUrl>
+		</developer>
 	</developers>
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<connection>scm:git:git://github.com/ArtLighter3/spring-boot-ebay-oauth2-client-fix</connection>
+		<developerConnection>scm:git:ssh://github.com/ArtLighter3/spring-boot-ebay-oauth2-client-fix</developerConnection>
+		<url>https://github.com/ArtLighter3/spring-boot-ebay-oauth2-client-fix/tree/master</url>
 	</scm>
 	<properties>
 		<java.version>17</java.version>
@@ -61,6 +68,13 @@
 
 	</dependencies>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -75,6 +89,17 @@
 							<version>3.4.4</version>
 						</path>
 					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.7.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
 		</plugins>
