@@ -15,7 +15,14 @@ This fix applies new filter that uses new converter. Everything is configured to
 
 ## Installation and configuration
 ### Initial setup
-Add release (.jar file) as a library to your project.
+Add release (.jar file) as a library to your project OR, if you use Maven, add dependency:
+```
+        <dependency>
+            <groupId>io.github.artlighter3</groupId>
+            <artifactId>spring-boot-ebay-oauth2-client-fix</artifactId>
+            <version>1.0</version>
+        </dependency>
+```
 
 As stated above, eBay uses different **redirect_uri** parameter and actual success/failure URL that eBay redirects to. Use application.properties as always to configure eBay's OAuth2 settings ([Authorization Grant Support](https://docs.spring.io/spring-security/reference/servlet/oauth2/client/authorization-grants.html)) (use 'ebay' as registrationId):
 ```
